@@ -5,7 +5,7 @@
   "main": "sketch.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "canvas-sketch ./projects/cube0/sketch.js --output=./projects/cube0/output/"
+    "start": "canvas-sketch ./projects/cube-01/sketch.js --output=./projects/cube-01/output/"
   },
   "keywords": [],
   "author": "",
