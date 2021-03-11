@@ -196,7 +196,7 @@ module.exports = (p) => {
       p.push();
       p.beginShape();
       p.noStroke();
-      p.fill("#000");
+      p.fill("#fff");
       vertices.forEach((v) => {
         p.vertex(v.x, v.y);
       });
@@ -251,7 +251,7 @@ module.exports = (p) => {
       p.push();
       p.beginShape();
       p.noStroke();
-      p.fill("#000");
+      p.fill("#fff");
       vertices.forEach((v) => {
         p.vertex(v.x, v.y);
       });
@@ -262,6 +262,7 @@ module.exports = (p) => {
     draw() {
       p.push();
       p.strokeWeight(9);
+      p.stroke("#fff");
       this.drawHexOutline();
       this.drawFace();
       this.drawFace2();

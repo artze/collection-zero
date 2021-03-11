@@ -23,7 +23,8 @@ const sketch = ({ p5 }) => {
     /**
      * p5 draw()
      */
-    p5.background(getRandomFromArr(["#f94144", "#f9c74f", "#33fffc"]));
+    p5.background(getRandomFromArr(["#000814", "#ba181b", "#09ecac"]));
+    // p5.background("#09ecac");
     const diameter = 200;
     const Hexagon = initHexagon(p5);
     iterator({ p: p5, diameter }, () => {
