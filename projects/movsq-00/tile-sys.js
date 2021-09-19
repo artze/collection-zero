@@ -1,7 +1,7 @@
 const { getRandomFromArr } = require("../../utils");
 const initTileRow = require("./tile-row");
 
-const numTilesPerRow = 75;
+const numTilesPerRow = 64;
 const movementInterval = 10;
 const chunkSize = { min: 4, max: 8 };
 
@@ -44,7 +44,7 @@ module.exports = (p) => {
     }
 
     removeRow() {
-      this.rows = this.rows.filter((r) => r.yOffset < 1125);
+      this.rows = this.rows.filter((r) => r.yOffset < 1024);
     }
 
     setColor() {
