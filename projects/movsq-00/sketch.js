@@ -3,7 +3,7 @@ const P5 = require("p5");
 const initTileSys = require("./tile-sys");
 
 const settings = {
-  dimensions: [1024, 1024],
+  dimensions: [2048, 2048],
   p5: P5,
   animate: true
 };

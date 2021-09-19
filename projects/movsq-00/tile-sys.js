@@ -44,7 +44,7 @@ module.exports = (p) => {
     }
 
     removeRow() {
-      this.rows = this.rows.filter((r) => r.yOffset < 1024);
+      this.rows = this.rows.filter((r) => r.yOffset < 2048);
     }
 
     setColor() {
