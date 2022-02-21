@@ -1,8 +1,10 @@
-function drawBottomHillVertices(p) {
+function drawBottomHillBackground(p) {
   p.push();
+  p.noStroke();
+  p.fill(255);
   p.beginShape();
   for (let i = 0; i < p.width; i++) {
-    p.vertex(i, getHillYCoord(p, i));
+    p.vertex(i, getHillYCoord(p, i + 15) - 50);
   }
   p.vertex(p.width, p.height);
   p.vertex(0, p.height);
@@ -10,26 +12,38 @@ function drawBottomHillVertices(p) {
   p.pop();
 }
 
-function drawTopHillVertices(p) {
-  p.push();
-  p.beginShape();
-  p.fill(255, 255, 255, 250);
+function drawBottomHill(p, color) {
+  const diagonalStripesGraphic = p.createGraphics(p.width, p.height);
+  diagonalStripesGraphic.background(255);
+  drawDiagonalLines(diagonalStripesGraphic, color);
+
+  const bottomHillGraphic = p.createGraphics(p.width, p.height);
+  bottomHillGraphic.push();
+  bottomHillGraphic.beginShape();
   for (let i = 0; i < p.width; i++) {
-    p.vertex(i, getHillYCoord(p, i));
+    bottomHillGraphic.vertex(i, getHillYCoord(p, i));
   }
-  p.vertex(p.width, 0);
-  p.vertex(0, 0);
-  p.endShape(p.CLOSE);
-  p.pop();
+  bottomHillGraphic.vertex(p.width, p.height);
+  bottomHillGraphic.vertex(0, p.height);
+  bottomHillGraphic.endShape(p.CLOSE);
+  bottomHillGraphic.pop();
+
+  const diagonalStripesImg = diagonalStripesGraphic.get();
+  const bottomHillImg = bottomHillGraphic.get();
+
+  diagonalStripesImg.mask(bottomHillImg);
+  p.image(diagonalStripesImg, 0, 0);
 }
 
-function drawHLines(p) {
+function drawHLines(p, color) {
   const step = 5;
   const numLines = p.ceil(p.width / step);
   let yCoord = 0;
   // const color = getRandomColor();
   p.push();
-  p.stroke("#c5e311");
+  // p.stroke(color);
+  // p.stroke("#5b85aa");
+  p.stroke("#ff5400");
   p.strokeWeight(2);
   for (let i = 0; i < numLines; i++) {
     p.line(0, yCoord, p.width, yCoord);
@@ -38,21 +52,25 @@ function drawHLines(p) {
   p.pop();
 }
 
-function drawDiagonalLines(p) {
+function drawDiagonalLines(p, color) {
   p.push();
-  for (let i = p.width * 2; i > 0; i -= 10) {
+  // p.stroke(color);
+  // p.stroke("#a93f55");
+  p.stroke("#50514f");
+  p.strokeWeight(1.5);
+  for (let i = p.width * 2; i > 0; i -= 7) {
     p.line(i, p.height, 0, p.height - i);
   }
   p.pop();
 }
 
 function getHillYCoord(p, x) {
-  return p.map(p.noise(x / 100), 0, 1, 200, p.height - 200);
+  return p.map(p.noise(x / 130), 0, 1, 400, p.height - 200);
 }
 
 module.exports = {
   drawDiagonalLines,
   drawHLines,
-  drawBottomHillVertices,
-  drawTopHillVertices
+  drawBottomHill,
+  drawBottomHillBackground
 };

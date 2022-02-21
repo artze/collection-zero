@@ -1,9 +1,10 @@
 const canvasSketch = require("canvas-sketch");
 const P5 = require("p5");
+const utils = require("../../utils");
 const hills = require("./hills");
 
 const settings = {
-  dimensions: [800, 800],
+  dimensions: [1000, 1000],
   p5: P5,
   animate: false
 };
@@ -12,18 +13,31 @@ const sketch = ({ p5 }) => {
   /**
    * p5 setup()
    */
-  const layer2 = p5.createGraphics(800, 800);
-  p5.noiseSeed(50);
+  p5.mouseClicked = () => {
+    p5.noiseSeed(p5.random(1, 200));
+    p5.clear();
+    p5.redraw();
+  };
+  const colorPalette = [
+    p5.color(152, 92, 255),
+    p5.color(255, 0, 84),
+    p5.color(255, 84, 0),
+    p5.color(245, 180, 0),
+    p5.color(80, 81, 79),
+    p5.color(91, 133, 170),
+    p5.color(62, 0, 12),
+    p5.color(209, 224, 0),
+    p5.color(169, 63, 85)
+  ];
+  p5.noiseDetail(2);
   return () => {
     /**
      * p5 draw()
      */
-    hills.drawHLines(p5);
-    hills.drawBottomHillVertices(p5);
-    layer2.background(255, 255, 255, 0);
-    hills.drawDiagonalLines(layer2);
-    hills.drawTopHillVertices(layer2);
-    p5.image(layer2, 0, 0);
+    p5.background(255);
+    hills.drawHLines(p5, utils.getRandomFromArr(colorPalette));
+    hills.drawBottomHillBackground(p5);
+    hills.drawBottomHill(p5, utils.getRandomFromArr(colorPalette));
   };
 };
 
