@@ -39,7 +39,6 @@ function drawHLines(p, color) {
   const step = 5;
   const numLines = p.ceil(p.width / step);
   let yCoord = 0;
-  // const color = getRandomColor();
   p.push();
   // p.stroke(color);
   // p.stroke("#5b85aa");
