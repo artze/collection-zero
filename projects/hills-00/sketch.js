@@ -4,7 +4,9 @@ const utils = require("../../utils");
 const hills = require("./hills");
 
 const settings = {
-  dimensions: [1000, 1000],
+  dimensions: [2000, 2000],
+  // pixelsPerInch: 300,
+  // scaleToFit: false,
   p5: P5,
   animate: false
 };
