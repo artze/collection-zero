@@ -70,7 +70,7 @@ function drawDiagonalLines(p, color) {
 }
 
 function getHillYCoord(p, x) {
-  return p.map(p.noise(x / 130), 0, 1, 400, p.height - 200);
+  return p.map(p.noise(x / 300), 0, 1, 400, p.height - 200);
 }
 
 module.exports = {
