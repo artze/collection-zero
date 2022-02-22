@@ -16,7 +16,7 @@ const sketch = ({ p5 }) => {
    * p5 setup()
    */
   p5.mouseClicked = () => {
-    p5.noiseSeed(p5.random(1, 200));
+    p5.noiseSeed(p5.random(1, 20000));
     p5.clear();
     p5.redraw();
   };

@@ -36,7 +36,7 @@ function drawBottomHill(p, color) {
 }
 
 function drawHLines(p, color) {
-  const step = 5;
+  const step = 12;
   const numLines = p.ceil(p.width / step);
   let yCoord = 0;
   p.push();
@@ -46,7 +46,7 @@ function drawHLines(p, color) {
   // p.stroke("#5b85aa");
   // p.stroke(p.color(152, 92, 255));
   p.stroke(p.color(245, 180, 0));
-  p.strokeWeight(2);
+  p.strokeWeight(5);
   for (let i = 0; i < numLines; i++) {
     p.line(0, yCoord, p.width, yCoord);
     yCoord += step;
@@ -55,6 +55,7 @@ function drawHLines(p, color) {
 }
 
 function drawDiagonalLines(p, color) {
+  const step = 14;
   p.push();
   // p.stroke(color);
   // p.stroke("#a93f55");
@@ -62,15 +63,15 @@ function drawDiagonalLines(p, color) {
   // p.stroke("#d1e000");
   // p.stroke(p.color(209, 224, 0));
   p.stroke(p.color(91, 133, 170));
-  p.strokeWeight(1.5);
-  for (let i = p.width * 2; i > 0; i -= 7) {
+  p.strokeWeight(3);
+  for (let i = p.width * 2; i > 0; i -= step) {
     p.line(i, p.height, 0, p.height - i);
   }
   p.pop();
 }
 
 function getHillYCoord(p, x) {
-  return p.map(p.noise(x / 270), 0, 1, 400, p.height - 200);
+  return p.map(p.noise(x / 270), 0, 1, 500, p.height - 200);
 }
 
 module.exports = {
