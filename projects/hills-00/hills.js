@@ -42,7 +42,8 @@ function drawHLines(p, color) {
   p.push();
   // p.stroke(color);
   // p.stroke("#5b85aa");
-  p.stroke("#ff5400");
+  // p.stroke("#ff5400");
+  p.stroke("#5b85aa");
   p.strokeWeight(2);
   for (let i = 0; i < numLines; i++) {
     p.line(0, yCoord, p.width, yCoord);
@@ -55,7 +56,8 @@ function drawDiagonalLines(p, color) {
   p.push();
   // p.stroke(color);
   // p.stroke("#a93f55");
-  p.stroke("#50514f");
+  // p.stroke("#50514f");
+  p.stroke("#d1e000");
   p.strokeWeight(1.5);
   for (let i = p.width * 2; i > 0; i -= 7) {
     p.line(i, p.height, 0, p.height - i);
