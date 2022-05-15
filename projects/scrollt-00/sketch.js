@@ -8,6 +8,10 @@ const settings = {
   animate: false
 };
 
+const config = {
+  numOfTriangles: 25
+};
+
 const sketch = ({ p5 }) => {
   /**
    * p5 setup()
@@ -23,10 +27,20 @@ const sketch = ({ p5 }) => {
      */
     p5.background("#F9E9EA");
     const Triangle = initTriangle(p5);
-    for (let i = 0; i < 15; i++) {
+    const triangles = [];
+    for (let i = 0; i < config.numOfTriangles; i++) {
       const triangle = new Triangle();
       triangle.draw();
+      triangles.push(triangle);
     }
+    p5.mouseWheel = (e) => {
+      p5.clear();
+      p5.background("#F9E9EA");
+      triangles.forEach((t) => {
+        t.update(e.delta);
+        t.draw();
+      });
+    };
   };
 };
 

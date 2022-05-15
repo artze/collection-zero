@@ -3,11 +3,27 @@ const colors = require("./colors");
 
 module.exports = function (p) {
   const rotationDeg = [90, 180, 270];
+  const scrollAmount = [5, 13, 20];
   return class Triangle {
     constructor() {
       this.fillColor = p.color(getRandomFromArr(colors));
-      this.sideLength = p.random(280, p.width);
-      this.yOffset = p.random(p.height - 100);
+      this.rotateAngle = getRandomFromArr(rotationDeg);
+      this.sideLength = p.random(290, p.width * 1.2);
+      this.yOffset = p.random(-p.height, p.height);
+      this.scrollAmount = getRandomFromArr(scrollAmount);
+    }
+
+    update(delta) {
+      if (delta > 0) {
+        this.yOffset += this.scrollAmount;
+      } else {
+        this.yOffset -= this.scrollAmount;
+      }
+      if (this.yOffset > p.height) {
+        this.yOffset = -p.height;
+      } else if (this.yOffset < -p.height) {
+        this.yOffset = p.height;
+      }
     }
 
     draw() {
@@ -16,7 +32,7 @@ module.exports = function (p) {
       p.fill(this.fillColor);
       p.translate(0, this.yOffset);
       p.translate(this.sideLength / 2, this.sideLength / 2);
-      p.rotate(getRandomFromArr(rotationDeg));
+      p.rotate(this.rotateAngle);
       p.triangle(
         -this.sideLength / 2,
         this.sideLength / 2,
