@@ -9,7 +9,7 @@ const settings = {
 };
 
 const config = {
-  numOfTriangles: 25
+  numOfTriangles: 20
 };
 
 const sketch = ({ p5 }) => {

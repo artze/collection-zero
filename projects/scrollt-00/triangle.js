@@ -8,7 +8,7 @@ module.exports = function (p) {
     constructor() {
       this.fillColor = p.color(getRandomFromArr(colors));
       this.rotateAngle = getRandomFromArr(rotationDeg);
-      this.sideLength = p.random(290, p.width * 1.2);
+      this.sideLength = p.random(300, p.width * 1.2);
       this.yOffset = p.random(-p.height, p.height);
       this.scrollAmount = getRandomFromArr(scrollAmount);
     }
